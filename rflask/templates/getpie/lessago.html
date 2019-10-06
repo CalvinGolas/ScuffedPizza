@@ -1,11 +1,17 @@
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 
 {% block header %}
   <h1>{% block title %}Want some pizza?{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
+     <div class="container">
+  <img src="../../static/loading.gif" alt="Animated" style="width:75%;">
+</div>
+  <div class="centered">
   <form method="post">
     <input type="submit" value="Yes Please.">
   </form>
+    </div>
 {% endblock %}
+

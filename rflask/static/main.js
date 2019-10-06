@@ -1,5 +1,4 @@
 var myImage = document.querySelector('img');
-
 myImage.onclick = function() {
     var mySrc = myImage.getAttribute('src');
     if(mySrc === '../../static/pizza.png'){

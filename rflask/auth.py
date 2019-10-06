@@ -3,15 +3,17 @@ import functools, re
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
+
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from rflask.db import get_db
-
+from . import gali
 bp = Blueprint('auth', __name__, url_prefix='/auth')
+
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
-    if request.method =='POST':
+    if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
         firstName = request.form['firstName']
@@ -20,54 +22,82 @@ def register():
         stateID = request.form['stateID']
         deliveryLocation = request.form['deliveryLocation']
         zipCode = request.form['zipCode']
-        creditCard = request.form['creditCard']
-        expirationDate = request.form['expirationDate']
-        cvv = request.form['cvv']
+        cardID = request.form['cardID']
+        gUsername = request.form['gUsername']
+        gPassword = request.form['gPassword']
+        accountNumber = request.form['accountNumber']
         city = request.form['city']
 
         db = get_db()
-        error = [None]
+        error = []
 
         if not firstName:
-            error = 'First name is required.'
-        elif not lastName:
-            error = 'Last name is required.'
-        elif not phoneNumber:
-            error = 'Phone number is required.'
-        elif not stateID:
-            error = 'State ID is required.'
-        elif not deliveryLocation:
-            error = 'Delivery location is required.'
-        elif not zipCode:
-            error = 'Zip code is required.'
-        elif not creditCard:
-            error = 'Credit card is required.'
-        elif not expirationDate:
-            error = 'Expiration date is required.'
-        elif not cvv:
-            error = 'Cvv is required.'
-        elif not city:
-            error = 'City is required.'
-        elif not email:
-            error = 'Email is required.'
-        elif not password:
-            error = 'Password is required.'
-        elif db.execute(
-            'SELECT id FROM user WHERE email = ?', (email,)
-        ).fetchone() is not None:
-            error = 'User {} is already registered.'.format(email)
+            error.append('First name is required.')
+        elif len(firstName) < 2:
+            error.append('First name is too short, must be at least two characters')
+        elif len(firstName) >= 15:
+            error.append('First name is too long, must be less than 16 characters')
+        elif re.match(re.compile("^[a-zA-Z]+[-]{0,1}[a-zA-Z]*$"), firstName) is None:
+            error.append('First name must use alphabetical characters, a hyphen is permitted')
+        if not firstName:
+            error.append('Last name is required.')
+        elif len(lastName) < 2:
+            error.append('Last name is too short, must be at least two characters')
+        elif len(lastName) >= 15:
+            error.append('Last name is too long, must be less than 16 characters')
+        elif re.match(re.compile("^[a-zA-Z]+[-]{0,1}[a-zA-Z]*$"), lastName) is None:
+            error.append('Last name must use alphabetical characters, a hyphen is permitted')
+        if not phoneNumber:
+            error.append('Phone number is required.')
+        elif re.match(re.compile("^[0-9]{10}$"), phoneNumber) is None:
+            error.append('Phone number is invalid, please input a sequence of 10 integers')
+        if not stateID:
+            error.append('State ID is required.')
+        elif re.match(re.compile("^[A-Z]{2}$"), stateID) is None:
+            error.append('State ID should be two capital letters.')
+        if not deliveryLocation:
+            error.append('Delivery location is required.')
+        if not zipCode:
+            error.append('Zip code is required.')
+        elif re.match(re.compile("^[0-9]{5}$"), zipCode) is None:
+            error.append('Zip code is invalid, please submit a 5 digit integer code.')
+        if not city:
+            error.append('City is required.')
+        if not email:
+            error.append('Email is required.')
+        elif re.match(re.compile("[a-zA-Z1-9]+@[a-zA-Z1-9]+\.[a-zA-Z1-9]+"), email) is None:
+            error.append('Invalid email format')
+        if not password:
+            error.append('Password is required.')
+        if not gUsername:
+            error.append('Galileo username is required.')
+        if not gPassword:
+            error.append('Galileo password is required.')
+        if not cardID:
+            error.append('Galileo card id is required.')
+        if not accountNumber:
+            error.append('Galileo account number is required.')
+        if not error:
+            if db.execute(
+                    'SELECT id FROM user WHERE email = ?', (email,)
+            ).fetchone() is not None:
+                error = 'User {} is already registered.'.format(email)
 
-        if error is None:
-            db.execute(
-                'INSERT INTO user (email, password, firstName, lastName, phoneNumber, stateID, deliveryLocation, zipCode, creditCard, expirationDate, cvv, city) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                (email, generate_password_hash(password), firstName, lastName, phoneNumber, stateID, deliveryLocation, zipCode, creditCard, expirationDate, cvv, city)
-            )
-            db.commit()
-            return redirect(url_for('auth.login'))
+            else:
+                db.execute(
+                    'INSERT INTO user (email, password, firstName, lastName, phoneNumber, stateID, deliveryLocation, '
+                    'zipCode, city, gUsername, gPassword, cardID, accountNumber) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                    (email, generate_password_hash(password), firstName, lastName, phoneNumber, stateID, deliveryLocation,
+                     zipCode, city, gUsername, gPassword, cardID, accountNumber)
+                )
 
-        flash(error)
+                db.commit()
+                return redirect(url_for('auth.login'))
+        if error is not []:
+            flash(error)
 
     return render_template('auth/register.html')
+
 
 @bp.route('/login', methods=('GET', 'POST'))
 def login():
@@ -94,6 +124,7 @@ def login():
 
     return render_template('auth/login.html')
 
+
 @bp.before_app_request
 def load_logged_in_user():
     user_id = session.get('user_id')
@@ -105,10 +136,12 @@ def load_logged_in_user():
             'SELECT * FROM user WHERE id = ?', (user_id,)
         ).fetchone()
 
+
 @bp.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('index'))
+
 
 def login_required(view):
     @functools.wraps(view)
@@ -116,4 +149,5 @@ def login_required(view):
         if g.user is None:
             return redirect(url_for('auth_login'))
         return view(**kwargs)
+
     return wrapped_view

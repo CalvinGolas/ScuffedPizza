@@ -7,29 +7,31 @@
 {% block content %}
   <form method="post">
     <label for="email">Email</label>
-    <input name="email" id="email" required>
+    <input name="email" >
     <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-     <label for="firstName">firstName</label>
-      <input name="firstName" id="firstName" required>
-     <label for="lastName">lastName</label>
-      <input name="lastName" id="lastName" required>
-     <label for="phoneNumber">phoneNumber</label>
-      <input name="phoneNumber" id="phoneNumber" required>
-     <label for="stateID">stateID</label>
-      <input name="stateID" id="stateID" required>
+    <input type="password" name="password" >
+     <label for="firstName">First Name</label>
+      <input name="firstName" >
+     <label for="lastName">Last Name</label>
+      <input name="lastName" >
+     <label for="phoneNumber">Phone Number</label>
+      <input name="phoneNumber" >
+     <label for="stateID">State ID</label>
+      <input name="stateID" >
       <label for="cit">City</label>
-      <input name="city" id="city" required>
-     <label for="deliveryLocation">deliveryLocation</label>
-      <input name="deliveryLocation" id="deliveryLocation" required>
+      <input name="city" >
+     <label for="deliveryLocation">Delivery Address</label>
+      <input name="deliveryLocation" >
      <label for="zipCode">zipCode</label>
-      <input name="zipCode" id="zipCode" required>
-     <label for="creditCard">creditCard</label>
-      <input name="creditCard" id="creditCard" required>
-     <label for="expirationDate">expirationDate</label>
-      <input name="expirationDate" id="expirationDate" required>
-     <label for="cvv">cvv</label>
-      <input name="cvv" id="cvv" required>
+      <input name="zipCode" >
+     <label for="cardID">Galileo Card Number</label>
+      <input name="cardID" >
+     <label for="gUsername">Galileo Username</label>
+      <input name="gUsername" >
+     <label for="gPassword">Galileo Password</label>
+      <input name="gPassword" >
+      <label for="accountNumber">Galileo Account Number</label>
+      <input name="accountNumber" >
     <input type="submit" value="Register">
   </form>
 {% endblock %}
