@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Register{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="email">Email</label>
+    <input name="email" id="email" required>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required>
+     <label for="firstName">firstName</label>
+      <input name="firstName" id="firstName" required>
+     <label for="lastName">lastName</label>
+      <input name="lastName" id="lastName" required>
+     <label for="phoneNumber">phoneNumber</label>
+      <input name="phoneNumber" id="phoneNumber" required>
+     <label for="stateID">stateID</label>
+      <input name="stateID" id="stateID" required>
+      <label for="cit">City</label>
+      <input name="city" id="city" required>
+     <label for="deliveryLocation">deliveryLocation</label>
+      <input name="deliveryLocation" id="deliveryLocation" required>
+     <label for="zipCode">zipCode</label>
+      <input name="zipCode" id="zipCode" required>
+     <label for="creditCard">creditCard</label>
+      <input name="creditCard" id="creditCard" required>
+     <label for="expirationDate">expirationDate</label>
+      <input name="expirationDate" id="expirationDate" required>
+     <label for="cvv">cvv</label>
+      <input name="cvv" id="cvv" required>
+    <input type="submit" value="Register">
+  </form>
+{% endblock %}

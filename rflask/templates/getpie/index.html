@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='homestyle.css') }}">
+        <meta charset="utf-8">
+        <title>Scuffed Pizza</title>
+    </head>
+    <body>
+        <h1>Welcome to Scuffed Pizza!!!</h1>
+        <img src="/static/pizza.png" alt="A picture of a pizza!">
+        <p>
+            Get ready for pizza: redefined.
+        </p>
+        <p>
+        <ul>
+            <li>><a class="action" href="{{ url_for('auth.register') }}">Register!</a></li>
+            <li>><a class="action" href="{{ url_for('auth.login') }}">Login!</a></li>
+        </ul>
+        </p>
+
+        <p>Thank you for visiting!</p>
+        <button>Change user</button>
+        <script src="/static/main.js"></script>
+    </body>
+</html>
