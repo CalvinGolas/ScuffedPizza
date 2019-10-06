@@ -1,7 +1,8 @@
 html {
     font-size: 10px;
     font-family: 'K2D', sans-serif;
-    background-color: #6A2D6B;
+    background: #6A2D6B url(background.jpg) no-repeat fixed center center;
+    background-size: cover;
 }
 
 h1 {
