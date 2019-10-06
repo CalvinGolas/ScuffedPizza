@@ -76,6 +76,7 @@ class Galigali:
     def setSpendingAccount(self):
         self.spending_account = self.createAccount(self.transactionId,self.access_token)[1]
         # print(spending_account)
+        return self.spending_account
 
 
 

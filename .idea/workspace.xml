@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="44588335-47f9-4851-8b67-8b480d5cc3a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rflask/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/rflask/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/instance/rflask.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/instance/rflask.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rflask/gali.py" beforeDir="false" afterPath="$PROJECT_DIR$/rflask/gali.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rflask/getpied.py" beforeDir="false" afterPath="$PROJECT_DIR$/rflask/getpied.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,13 +39,6 @@
         <item name="rflask" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="rflask" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="main: schema" type="981a47c2:SqliteImplModel$Schema" />
-        <item name="SpendingAccount: table" type="3d80ac25:SqliteImplModel$Table" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
@@ -134,7 +129,17 @@
     <option name="allServicesViewState">
       <serviceView>
         <treeState>
-          <expand />
+          <expand>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@86c31ae4" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+            </path>
+            <path>
+              <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceGroupNode@86c31ae4" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              <item name="com.intellij.execution.services.ServiceModel$ServiceNode@70df89d" type="9fbbdea:ServiceModel$ServiceNode" />
+            </path>
+          </expand>
           <select />
         </treeState>
       </serviceView>
@@ -154,7 +159,7 @@
       <workItem from="1570330475787" duration="145000" />
       <workItem from="1570330635910" duration="25122000" />
       <workItem from="1570369426798" duration="336000" />
-      <workItem from="1570369767694" duration="659000" />
+      <workItem from="1570369767694" duration="1207000" />
     </task>
     <servers />
   </component>

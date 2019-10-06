@@ -33,6 +33,7 @@ def getpie():
         if db.execute('SELECT COUNT(*) FROM SpendingAccount').fetchone()[0] < 1:
             db.execute('INSERT INTO SpendingAccount (rpn) VALUES (?)', (newPerson.setSpendingAccount(),))
             print("successful insertion")
+            db.commit()
         else:
             newPerson.spending_account = db.execute('SELECT rpn FROM SpendingAccount WHERE id = 1').fetchone()[0]
 
