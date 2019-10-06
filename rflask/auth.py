@@ -65,8 +65,6 @@ def register():
             error.append('City is required.')
         if not email:
             error.append('Email is required.')
-        elif re.match(re.compile("[a-zA-Z1-9]+@[a-zA-Z1-9]+\.[a-zA-Z1-9]+"), email) is None:
-            error.append('Invalid email format')
         if not password:
             error.append('Password is required.')
         if not gUsername:

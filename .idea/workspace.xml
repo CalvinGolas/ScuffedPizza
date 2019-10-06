@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="44588335-47f9-4851-8b67-8b480d5cc3a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rflask/static/background.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/rflask/static/background.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rflask/static/homestyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/rflask/static/homestyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rflask/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/rflask/auth.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -155,7 +154,7 @@
       <workItem from="1570330475787" duration="145000" />
       <workItem from="1570330635910" duration="25122000" />
       <workItem from="1570369426798" duration="336000" />
-      <workItem from="1570369767694" duration="182000" />
+      <workItem from="1570369767694" duration="659000" />
     </task>
     <servers />
   </component>
